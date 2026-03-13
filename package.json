@@ -1,0 +1,41 @@
+{
+  "name": "screeps-swift-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A starter kit for developing Screeps AI using Swift and WebAssembly",
+  "main": "dist/main.js",
+  "scripts": {
+    "clean": "node Scripts/clean.mjs",
+    "build": "node Scripts/build.mjs",
+    "build:swift": "node Scripts/build.mjs",
+    "build:bootstrap": "node Scripts/build.mjs --skip-swift",
+    "lint": "node Scripts/check-project.mjs",
+    "test": "node --test test/**/*.test.mjs",
+    "push-main": "npm run build && node Scripts/upload.mjs --dest main",
+    "push-pserver": "npm run build && node Scripts/upload.mjs --dest pserver",
+    "push-season": "npm run build && node Scripts/upload.mjs --dest season",
+    "push-sim": "npm run build && node Scripts/upload.mjs --dest sim",
+    "watch": "chokidar \"Sources/**/*.swift\" \"Scripts/**/*.mjs\" \"Package.swift\" -c \"npm run build\"",
+    "watch-main": "chokidar \"Sources/**/*.swift\" \"Scripts/**/*.mjs\" \"Package.swift\" -c \"npm run push-main\"",
+    "watch-pserver": "chokidar \"Sources/**/*.swift\" \"Scripts/**/*.mjs\" \"Package.swift\" -c \"npm run push-pserver\"",
+    "watch-season": "chokidar \"Sources/**/*.swift\" \"Scripts/**/*.mjs\" \"Package.swift\" -c \"npm run push-season\"",
+    "watch-sim": "chokidar \"Sources/**/*.swift\" \"Scripts/**/*.mjs\" \"Package.swift\" -c \"npm run push-sim\""
+  },
+  "keywords": [
+    "screeps",
+    "swift",
+    "webassembly",
+    "wasm",
+    "ai",
+    "bot"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0"
+  },
+  "dependencies": {
+    "javascript-kit-swift": "^0.20.0",
+    "screeps-api": "^1.16.1"
+  }
+}

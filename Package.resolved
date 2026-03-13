@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "javascriptkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftwasm/JavaScriptKit.git",
+      "state" : {
+        "revision" : "1f54ba6b17f4d0f378f671210f7121a29996159e",
+        "version" : "0.47.1"
+      }
+    },
+    {
+      "identity" : "screepskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mkaulfers/ScreepsKit.git",
+      "state" : {
+        "revision" : "2b76387c88e9fb8cb33d8627778b4e6e46461c9a",
+        "version" : "0.1.0"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
+        "version" : "602.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
