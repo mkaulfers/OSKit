@@ -7,9 +7,14 @@ This starter includes a Docker-based private server setup built around the `scre
 - Docker Desktop or Docker Engine with Compose
 - A Steam key for the Screeps private server
 
+## Apple Silicon
+
+The `screepers/screeps-launcher` image is currently published as `linux/amd64`, so Docker Desktop on Apple Silicon needs to run it under emulation.
+`Server/docker-compose.yml` already sets `platform: linux/amd64` for you.
+
 ## Files
 
-- `docker-compose.yml`: runs MongoDB, Redis, and `screeps-launcher`
+- `docker-compose.yml`: runs MongoDB, Redis, `screeps-launcher`, and an optional `steamless-client`
 - `screeps/config.example.yml`: starter launcher config
 - `screeps/config.yml`: your local config copy with secrets and local tweaks
 
@@ -34,6 +39,32 @@ docker compose -f Server/docker-compose.yml up -d
 ```
 
 The Screeps web UI will be available at `http://127.0.0.1:21025`.
+
+## Optional Browser Client
+
+If you want the newer browser-based Steam client proxy, this stack also includes an optional `steamless-client` service based on [`screepers/steamless-client`](https://github.com/screepers/steamless-client).
+
+Before starting it, make the Screeps `package.nw` file available inside `Server/steamless-client/package.nw`, or point `SCREEPS_NW_DIR` at the directory that already contains `package.nw`. You can export it in your shell, or put it in a local `.env` file next to `Server/docker-compose.yml`.
+
+Example on macOS:
+
+```bash
+export SCREEPS_NW_DIR="$HOME/Library/Application Support/Steam/steamapps/common/Screeps"
+```
+
+Then start the browser client profile:
+
+```bash
+docker compose -f Server/docker-compose.yml --profile browser up -d
+```
+
+The browser client will be available at `http://127.0.0.1:8080` and proxy your local Screeps server through `steamless-client`.
+
+If you need to access it from another machine, set:
+
+- `SCREEPS_PROXY_HOST=0.0.0.0`
+- `SCREEPS_PROXY_PUBLIC_HOSTNAME=<your host or IP>`
+- optionally `SCREEPS_PROXY_PORT=<custom port>`
 
 ## Server Management
 

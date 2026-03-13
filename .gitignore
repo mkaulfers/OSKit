@@ -70,3 +70,7 @@ yarn-debug.log*
 yarn-error.log*
 screeps.json
 Server/mongo/
+
+Server/steamless-client/package.nw
+
+Server/.DS_Store
