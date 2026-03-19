@@ -74,3 +74,5 @@ Server/mongo/
 Server/steamless-client/package.nw
 
 Server/.DS_Store
+
+Server/.env
